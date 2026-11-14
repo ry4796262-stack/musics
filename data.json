@@ -1,0 +1,20 @@
+{
+    "tracks": [
+        {
+            "id": "430102ed9bba4178999df859b3bdf859",
+            "title": "roar",
+            "artist": "cK",
+            "url": "/static/uploads/825a3894a00a49bd8887c2988b345133.mp3",
+            "filename": "825a3894a00a49bd8887c2988b345133.mp3"
+        }
+    ],
+    "playlists": [
+        {
+            "id": "default",
+            "name": "Favorites",
+            "track_ids": [
+                "430102ed9bba4178999df859b3bdf859"
+            ]
+        }
+    ]
+}
