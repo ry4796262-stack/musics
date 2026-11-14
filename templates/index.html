@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Studio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="layout">
+        <!-- Боковая панель -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon"></div>
+                <h1>Sounds</h1>
+            </div>
+
+            <div class="playlist-form">
+                <input type="text" id="new-playlist-name" placeholder="New playlist...">
+                <button id="create-playlist-btn" title="Create">+</button>
+            </div>
+
+            <div class="nav-sections">
+                <div class="nav-item active" data-id="all">
+                    <span>All Tracks</span>
+                    <span class="counter" id="all-count">0</span>
+                </div>
+                <div class="playlists-label">Your Shelves</div>
+                <div id="playlists-list" class="playlists-container"></div>
+            </div>
+        </aside>
+
+        <!-- Основная область -->
+        <main class="content-area">
+            <header class="header">
+                <h2 id="current-view-title">All Tracks</h2>
+                <button class="btn-action" id="open-upload-modal">+ Upload Track</button>
+            </header>
+
+            <div class="catalog" id="tracks-list">
+                <!-- Треки рендерятся через JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Нижняя панель плеера -->
+    <footer class="player-dock">
+        <!-- Блок 1: Кнопки управления слева -->
+        <div class="player-controls-group">
+            <button class="ctl-btn" id="prev-btn">◀</button>
+            <button class="ctl-btn play-main" id="play-pause-btn">▶</button>
+            <button class="ctl-btn" id="next-btn">▶</button>
+        </div>
+
+        <!-- Блок 2: Таймлайн посередине -->
+        <div class="timeline-group">
+            <span id="current-time">0:00</span>
+            <input type="range" id="progress-bar" value="0" min="0" max="100">
+            <span id="duration">0:00</span>
+        </div>
+
+        <!-- Блок 3: Обложка, трек и громкость справа -->
+        <div class="right-player-side">
+            <div class="track-meta-preview">
+                <div class="vinyl-disc" id="vinyl-disc"></div>
+                <div>
+                    <div class="p-title" id="player-title">Nothing playing</div>
+                    <div class="p-artist" id="player-artist">—</div>
+                </div>
+            </div>
+            <div class="volume-group">
+                <span class="volume-icon" id="mute-btn" title="Mute/Unmute">🔊</span>
+                <input type="range" id="volume-bar" value="80" min="0" max="100">
+            </div>
+        </div>
+
+        <audio id="audio-element"></audio>
+    </footer>
+
+    <!-- Модальное окно загрузки -->
+    <div class="modal-overlay" id="upload-modal">
+        <div class="modal-card">
+            <h3>New Audio Track</h3>
+            <p class="modal-sub">Upload a track in MP3, WAV or OGG format</p>
+            <form id="upload-form">
+                <input type="text" name="title" placeholder="Track title" required>
+                <input type="text" name="artist" placeholder="Artist name" required>
+                <label class="file-picker">
+                    <input type="file" name="file" accept=".mp3,.wav,.ogg" required>
+                    <span id="file-label-text">Choose audio file...</span>
+                </label>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-text" id="close-modal">Cancel</button>
+                    <button type="submit" class="btn-action">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
